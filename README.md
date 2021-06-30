@@ -1,6 +1,6 @@
 # my-react-chatroom
 
-This is an example practising the baisc reactjs for personal use, it consists of a websocket-based chatroom, by getting started with the following:
+This is an example of using very basic reactjs for personal learning, it consists of a websocket-based chatroom, browserify, webpack, by getting started, just simply run:
 
 ```shell
 npm install

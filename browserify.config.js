@@ -2,18 +2,31 @@ var fs = require("fs")
 var watchify = require('watchify')
 var browserify = require("browserify")
 var express = require('express')
+var tsify = require("tsify")
 
 const dist = "dist/bundle-all.js"
 
 const b = browserify({
-  entries: ["./index.js"],
+  entries: ["./index.tsx"],
   cache: {},
   packageCache: {},
   plugin: [watchify]
 })
 
 b.on('update', () => b.bundle().pipe(fs.createWriteStream(dist)))
-b.transform("babelify", {presets: ["@babel/preset-env", "@babel/preset-react"]})
+b.plugin(tsify, { 
+  target: 'es6', 
+  jsx: 'react', 
+  esModuleInterop: true, 
+  noImplicitAny: false
+})
+b.transform("babelify", {
+  extensions: [ '.tsx', '.ts' ],
+  presets: [
+    "@babel/preset-env", 
+    "@babel/preset-react"
+  ]
+})
 b.bundle().pipe(fs.createWriteStream(dist))
 
 var app = express()

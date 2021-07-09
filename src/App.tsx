@@ -1,13 +1,18 @@
 import React, {useState} from 'react';
+import CSS from 'csstype';
 
 export default class App extends React.Component {
+
+  ws:any
+  state:any
 
   constructor(props) {
     super(props)
     this.state = {
       participants: [],
       message: '',
-      network: ''
+      network: '',
+      nickname: ''
     }
   }
 
@@ -127,7 +132,7 @@ export default class App extends React.Component {
   }
 }
 
-const style = {
+const style:any = {
   app: {
     //backgroundColor: 'red',
     textAlign: 'center'
@@ -141,7 +146,7 @@ const style = {
     height: '680px',
     display: 'flex',
     flexDirection: 'row'
-  },
+  } as CSS.Properties,
   leftPanel: {
     primary: {
       padding: '5px',
@@ -150,18 +155,18 @@ const style = {
       //height: '100%',
       display: 'flex',
       flexDirection: 'column'
-    },
+    } as CSS.Properties,
     messageViewer: {
       flex: 1,
       //width: '100%',
       backgroundColor: 'white'
-    },
+    } as CSS.Properties,
     nickname: {
       height: '30px',
       color: 'white',
       display: 'flex',
       alignItems: 'center'
-    },
+    } as CSS.Properties,
     messageSender: {
       //width: '100%',
       height: '100px',
@@ -169,12 +174,12 @@ const style = {
       marginTop: '5px',
       display: 'flex',
       flexDirection: 'row',
-    },
+    } as CSS.Properties,
     textarea: {
       flex: 1,
       border: 0,
       marginRight: '2px'
-    }
+    } as CSS.Properties
   },
   rightPanel: {
     //padding: '5px',
@@ -182,8 +187,8 @@ const style = {
     height: '100%',
     color: 'white',
     backgroundColor: '#264653'
-  },
+  } as CSS.Properties,
   h1: {
     color: 'black'
-  }
+  } as CSS.Properties
 }
